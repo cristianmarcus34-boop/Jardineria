@@ -1,75 +1,344 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Galería | Jardinero!{% endblock %}
-
+{% block title %}Galería | Jardinería y Piscinas{% endblock %}
 
 {% block content %}
 
-<body class="galeria-page">
-    <!-- Sección de Galería -->
-    <section class="container my-5 fade-in" id="galeria">
-        <h2 class="text-center">Galería de Trabajos</h2>
-
-
-        <!-- Grid de imágenes -->
-        <div class="gallery-grid">
-            <img src="{% static 'img/podaficus.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/cortepasto.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/limpiando_piscina.gif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/corte_maquina.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/mant_jar.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/decoracion_jardin.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/sistema_riego.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/poda_arboles.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/barrefondo.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/corte_cesped.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/break.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
-            <img src="{% static 'img/poda.jfif' %}" alt="Imagen de galería" onclick="openLightbox(this)">
+<!-- ============================== -->
+<!-- HERO DE GALERÍA -->
+<!-- ============================== -->
+<section class="galeria-hero">
+    <div class="container">
+        <div class="galeria-hero-content">
+            <span class="galeria-badge">✦ Nuestros trabajos</span>
+            <h1 class="galeria-title">
+                Galería de <span class="highlight">proyectos</span>
+            </h1>
+            <p class="galeria-subtitle">
+                Conocé algunos de nuestros trabajos realizados. Calidad y profesionalismo en cada detalle.
+            </p>
         </div>
-        <iframe src="https://assets.pinterest.com/ext/embed.html?id=116671446591764483" height="500" width="300"
-            frameborder="0" scrolling="no"></iframe>
-    </section>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-        <img id="lightbox-img" src="" alt="Imagen ampliada">
     </div>
+</section>
 
-    <script>
-        // Función para abrir el lightbox con la imagen seleccionada
-        function openLightbox(imgElement) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-    
-            // Mostrar el lightbox y la imagen seleccionada
-            lightbox.style.display = "flex";
-            lightboxImg.src = imgElement.src;
-    
-            // Agregar la clase 'show' para mostrar el lightbox
-            lightbox.classList.add('show');
-    
-            // Transición suave de opacidad
-            setTimeout(() => {
-                lightbox.style.opacity = 1;
-            }, 10);
+<!-- ============================== -->
+<!-- FILTROS DE CATEGORÍAS -->
+<!-- ============================== -->
+<section class="galeria-filtros">
+    <div class="container">
+        <div class="filtros-buttons">
+            <button class="filtro-btn active" data-filter="all">Todos</button>
+            <button class="filtro-btn" data-filter="jardin">Jardinería</button>
+            <button class="filtro-btn" data-filter="piscina">Piscinas</button>
+            <button class="filtro-btn" data-filter="poda">Poda</button>
+            <button class="filtro-btn" data-filter="decoracion">Decoración</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- GALERÍA DE IMÁGENES -->
+<!-- ============================== -->
+<section class="galeria-grid-section">
+    <div class="container">
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Jardinería -->
+            <div class="gallery-item" data-category="jardin">
+                <img src="{% static 'img/mant_jar.jfif' %}" alt="Mantenimiento de jardín" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Mantenimiento de jardín</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jardin">
+                <img src="{% static 'img/cortepasto.jfif' %}" alt="Corte de pasto" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Corte de pasto</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jardin">
+                <img src="{% static 'img/corte_cesped.jfif' %}" alt="Corte de césped" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Corte de césped profesional</span>
+                </div>
+            </div>
+
+            <!-- Piscinas -->
+            <div class="gallery-item" data-category="piscina">
+                <img src="{% static 'img/limpiando_piscina.gif' %}" alt="Limpieza de piscina" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Limpieza de piscina</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="piscina">
+                <img src="{% static 'img/barrefondo.jfif' %}" alt="Barre fondo" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Mantenimiento de piscina</span>
+                </div>
+            </div>
+
+            <!-- Poda -->
+            <div class="gallery-item" data-category="poda">
+                <img src="{% static 'img/podaficus.jfif' %}" alt="Poda de ficus" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Poda de ficus</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="poda">
+                <img src="{% static 'img/poda_arboles.jfif' %}" alt="Poda de árboles" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Poda de árboles</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="poda">
+                <img src="{% static 'img/poda.jfif' %}" alt="Poda profesional" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Poda profesional</span>
+                </div>
+            </div>
+
+            <!-- Decoración -->
+            <div class="gallery-item" data-category="decoracion">
+                <img src="{% static 'img/decoracion_jardin.jfif' %}" alt="Decoración de jardín" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Decoración de jardín</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="decoracion">
+                <img src="{% static 'img/sistema_riego.jfif' %}" alt="Sistema de riego" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Sistema de riego</span>
+                </div>
+            </div>
+
+            <!-- Otros -->
+            <div class="gallery-item" data-category="jardin">
+                <img src="{% static 'img/corte_maquina.jfif' %}" alt="Corte con máquina" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Corte con máquina profesional</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="decoracion">
+                <img src="{% static 'img/break.jfif' %}" alt="Break de jardín" onclick="openLightbox(this)">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>Espacios exteriores</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- CONTADOR DE PROYECTOS -->
+<!-- ============================== -->
+<section class="galeria-stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-count="150">0</span>
+                <span class="stat-label">Proyectos completados</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="98">0</span>
+                <span class="stat-label">% Satisfacción</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="12">0</span>
+                <span class="stat-label">Años de experiencia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="5">0</span>
+                <span class="stat-label">Premios recibidos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- CTA - LLAMADA A LA ACCIÓN -->
+<!-- ============================== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Querés un espacio <span class="highlight">como estos</span>?</h2>
+            <p>Contactanos y transformamos tu jardín o piscina en un lugar único.</p>
+            <a href="{% url 'pedido' %}" class="btn-primary btn-large">
+                <i class="fas fa-whatsapp"></i> Solicitar presupuesto
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- LIGHTBOX -->
+<!-- ============================== -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+    <span class="lightbox-counter" id="lightboxCounter">1 / 12</span>
+</div>
+
+<script>
+    // ==============================
+    // FILTROS DE CATEGORÍAS
+    // ==============================
+    const filterButtons = document.querySelectorAll('.filtro-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.dataset.filter;
+
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // ==============================
+    // LIGHTBOX CON NAVEGACIÓN
+    // ==============================
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(imgElement) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const counter = document.getElementById('lightboxCounter');
+
+        // Obtener todas las imágenes de la galería
+        const allImages = document.querySelectorAll('.gallery-item img');
+        currentImages = Array.from(allImages);
+
+        // Encontrar el índice de la imagen actual
+        currentIndex = currentImages.indexOf(imgElement);
+
+        // Mostrar la imagen
+        lightbox.style.display = 'flex';
+        lightboxImg.src = imgElement.src;
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+
+        // Animación de entrada
+        setTimeout(() => {
+            lightbox.style.opacity = 1;
+        }, 10);
+
+        // Bloquear scroll
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+        const lightbox = document.getElementById('lightbox');
+        if (event.target.id === 'lightbox-img' || event.target.closest('.lightbox-nav')) {
+            return;
         }
-    
-        // Función para cerrar el lightbox
-        function closeLightbox(event) {
-            const lightbox = document.getElementById('lightbox');
-    
-            // Verificar si el clic se originó en la imagen
-            if (event.target.id === 'lightbox-img') {
-                return; // No cerrar el lightbox si se hizo clic en la imagen
+        lightbox.style.opacity = 0;
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    function navigateLightbox(direction) {
+        const lightboxImg = document.getElementById('lightbox-img');
+        const counter = document.getElementById('lightboxCounter');
+
+        currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+        lightboxImg.src = currentImages[currentIndex].src;
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+
+    // Navegación con teclado
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+            if (e.key === 'Escape') {
+                lightbox.style.opacity = 0;
+                setTimeout(() => {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
             }
-    
-            // Desvanecer el lightbox
-            lightbox.style.opacity = 0;
-            setTimeout(() => {
-                // Ocultar el lightbox después de la animación y eliminar la clase 'show'
-                lightbox.style.display = "none";
-                lightbox.classList.remove('show');
-            }, 300);
         }
-    </script>
-</body>
+    });
+
+    // ==============================
+    // CONTADOR ANIMADO
+    // ==============================
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const target = parseInt(counter.dataset.count);
+            const increment = Math.ceil(target / speed);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target;
+                    return;
+                }
+                counter.textContent = current;
+                setTimeout(updateCounter, 20);
+            };
+            updateCounter();
+        });
+    }
+
+    // Ejecutar cuando la sección sea visible
+    const statsSection = document.querySelector('.galeria-stats');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+</script>
+
 {% endblock %}

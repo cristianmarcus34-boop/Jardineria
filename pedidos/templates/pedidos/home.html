@@ -3,116 +3,244 @@
 
 {% block content %}
 
-<div class="home-page">
-    <header class="hero bg-success text-white text-center py-5">
-        <div class="container">
-            <img src="{% static 'img/jardin_home.jfif' %}" class="caritafeliz" alt="caritafeliz">
-            <h1 class="display-4"><i class="fas fa-leaf"></i> Bienvenidos a Jardinería y Piscinas</h1>
-            <p class="lead">Expertos en mantenimiento de jardines, piscinas, corte de césped y poda de árboles.</p>
-            <a href="{% url 'pedido' %}" class="btn btn-light btn-lg mt-3"><i class="fas fa-shopping-cart"></i> Hacer un Pedido</a>
-        </div>
-    </header>
-
-    <section class="container my-5">
-        <h2 class="text-center" id="servicios"><i class="fas fa-cogs"></i> Nuestros Servicios</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for servicio in servicios %}
-            <div class="col">
-                <div class="card shadow-sm service-card">
-                    <img src="{% static 'img/' %}{{ servicio.imagen }}" class="card-img-top" alt="{{ servicio.titulo }}" onclick="openLightbox(this)">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><i class="{{ servicio.icono }}"></i> {{ servicio.titulo }}</h5>
-                        <p class="card-text">{{ servicio.descripcion }}</p>
+<!-- ============================== -->
+<!-- HERO SECTION -->
+<!-- ============================== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">✦ Expertos desde 2020</span>
+                <h1 class="hero-title">
+                    Transformamos <br />
+                    <span class="highlight">tus espacios</span> exteriores
+                </h1>
+                <p class="hero-subtitle">
+                    Especialistas en jardinería, mantenimiento de piscinas y diseño de exteriores.
+                    Calidad y profesionalismo garantizados.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'pedido' %}" class="btn-primary">
+                        <i class="fas fa-whatsapp"></i> Contactar ahora
+                    </a>
+                    <a href="#servicios" class="btn-secondary">
+                        Ver servicios <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'img/jardin_home.jfif' %}" alt="Jardín y Piscinas" class="hero-img">
+                <div class="hero-floating-card">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <strong>4.9/5</strong>
+                        <span>+150 clientes felices</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- SERVICIOS -->
+<!-- ============================== -->
+<section class="servicios" id="servicios">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Nuestros Servicios</span>
+            <h2 class="section-title">Lo que <span class="highlight">ofrecemos</span></h2>
+            <p class="section-subtitle">Soluciones completas para el cuidado y mantenimiento de tus espacios exteriores</p>
+        </div>
+
+        <div class="servicios-grid">
+            {% for servicio in servicios %}
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="{{ servicio.icono }}"></i>
+                </div>
+                <h3>{{ servicio.titulo }}</h3>
+                <p>{{ servicio.descripcion }}</p>
+                <a href="{% url 'pedido' %}" class="servicio-link">
+                    Solicitar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
             {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="container my-5 fade-in" id="beneficios">
-        <h2 class="text-center"><i class="fas fa-check-circle"></i> ¿Por qué elegirnos?</h2>
-        <div class="row mt-4 text-center">
+<!-- ============================== -->
+<!-- BENEFICIOS -->
+<!-- ============================== -->
+<section class="beneficios">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">¿Por qué elegirnos?</span>
+            <h2 class="section-title">Nuestros <span class="highlight">beneficios</span></h2>
+        </div>
+
+        <div class="beneficios-grid">
             {% for beneficio in beneficios %}
-            <div class="col-md-4 benefit-item">
-                <i class="{{ beneficio.icono }} fs-1 mb-3 text-primary"></i>
-                <h5>{{ beneficio.titulo }}</h5>
+            <div class="beneficio-item">
+                <div class="beneficio-icon">
+                    <i class="{{ beneficio.icono }}"></i>
+                </div>
+                <h4>{{ beneficio.titulo }}</h4>
                 <p>{{ beneficio.descripcion }}</p>
             </div>
             {% endfor %}
         </div>
-    </section>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close">&times;</span>
-        <img id="lightbox-img" class="lightbox-content">
     </div>
+</section>
 
-    <section class="bg-light py-5 fade-in" id="testimonios">
-        <h2 class="text-center"><i class="fas fa-comments"></i> Testimonios</h2>
-        <div class="container mt-4">
-            <div class="row d-flex align-items-stretch">
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <p class="card-text flex-grow-1"><i class="fas fa-quote-left"></i> Excelente servicio, mi jardín nunca había estado tan bien cuidado. 100% recomendado. <i class="fas fa-quote-right"></i></p>
-                            <footer class="blockquote-footer">Diego Buchamer <cite title="Source Title">Cliente satisfecho</cite></footer>
-                        </div>
-                    </div>
+<!-- ============================== -->
+<!-- TESTIMONIOS -->
+<!-- ============================== -->
+<section class="testimonios" id="testimonios">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Testimonios</span>
+            <h2 class="section-title">Lo que dicen <span class="highlight">nuestros clientes</span></h2>
+        </div>
+
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="testimonio-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <p class="card-text flex-grow-1"><i class="fas fa-quote-left"></i> Muy profesionales, el mantenimiento de mi piscina ha sido impecable. Volveré a contratarlos. <i class="fas fa-quote-right"></i></p>
-                            <footer class="blockquote-footer">María Juarez <cite title="Source Title">Cliente satisfecho</cite></footer>
-                        </div>
-                    </div>
+                <p class="testimonio-text">
+                    "Excelente servicio, mi jardín nunca había estado tan bien cuidado. 100% recomendado."
+                </p>
+                <div class="testimonio-author">
+                    <strong>Diego Buchamer</strong>
+                    <span>Cliente satisfecho</span>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <p class="card-text flex-grow-1"><i class="fas fa-quote-left"></i> Increíble trabajo en la poda de árboles y decoración del jardín. Mis vecinos están impresionados. <i class="fas fa-quote-right"></i></p>
-                            <footer class="blockquote-footer">Dario López <cite title="Source Title">Cliente satisfecho</cite></footer>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonio-text">
+                    "Muy profesionales, el mantenimiento de mi piscina ha sido impecable. Volveré a contratarlos."
+                </p>
+                <div class="testimonio-author">
+                    <strong>María Juarez</strong>
+                    <span>Cliente satisfecho</span>
+                </div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonio-text">
+                    "Increíble trabajo en la poda de árboles y decoración del jardín. Mis vecinos están impresionados."
+                </p>
+                <div class="testimonio-author">
+                    <strong>Dario López</strong>
+                    <span>Cliente satisfecho</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="bg-primary text-white text-center py-5 fade-in">
-        <h2><i class="fas fa-lightbulb"></i> ¿Listo para transformar tu espacio?</h2>
-        <p>Contáctanos ahora y obtén un presupuesto personalizado para tus necesidades.</p>
-        <a href="{% url 'pedido' %}" class="btn btn-light btn-lg"><i class="fas fa-clipboard-list"></i> Solicitar Servicio</a>
-
-        <div class="container text-center" id="contacto">
-            <h2><i class="fas fa-envelope"></i> Contáctanos</h2>
-            <p>Estamos listos para atender tus consultas y ofrecerte el mejor servicio.</p>
+<!-- ============================== -->
+<!-- CTA - LLAMADA A LA ACCIÓN -->
+<!-- ============================== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para transformar <span class="highlight">tu espacio</span>?</h2>
+            <p>Contáctanos ahora y obtené un presupuesto personalizado para tus necesidades.</p>
+            <a href="{% url 'pedido' %}" class="btn-primary btn-large">
+                <i class="fas fa-clipboard-list"></i> Solicitar Servicio
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Imagen Original</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- ============================== -->
+<!-- CONTACTO -->
+<!-- ============================== -->
+<section class="contacto" id="contacto">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Contacto</span>
+            <h2 class="section-title">¿Hablamos?</h2>
+            <p class="section-subtitle">Estamos listos para atender tus consultas y ofrecerte el mejor servicio.</p>
+        </div>
+
+        <div class="contacto-grid">
+            <div class="contacto-info">
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <span>+54 9 11 2167-4114</span>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <img id="modalImage" src="" class="img-fluid" alt="Imagen completa">
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong>Email</strong>
+                        <span>info@jardinypiscinas.com</span>
+                    </div>
                 </div>
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Ubicación</strong>
+                        <span>Buenos Aires, Argentina</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacto-whatsapp">
+                <a href="https://wa.me/5491121674114?text=¡Hola!%20Gracias%20por%20contactarnos.%20¿En%20qué%20podemos%20ayudarte?" 
+                   target="_blank" 
+                   class="whatsapp-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <span>¿Necesitas ayuda?</span>
+                        <small>Respondemos rápido</small>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>
+</section>
+
+<!-- ============================== -->
+<!-- LIGHTBOX PARA IMÁGENES -->
+<!-- ============================== -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" class="lightbox-content">
 </div>
 
 <script>
-    document.querySelectorAll('.card-img-top').forEach(image => {
-        image.addEventListener('click', () => {
-            document.getElementById('modalImage').src = image.src;
-        });
-    });
-
     function openLightbox(imgElement) {
         document.getElementById("lightbox").style.display = "flex";
         document.getElementById("lightbox-img").src = imgElement.src;
@@ -122,4 +250,5 @@
         document.getElementById("lightbox").style.display = "none";
     }
 </script>
+
 {% endblock %}
