@@ -23,9 +23,9 @@ urllib3==2.3.0
 whitenoise==6.9.0
 EOF
 
-# Instalar dependencias
+# Instalar dependencias (con --break-system-packages para Vercel)
 echo "📦 Instalando dependencias..."
-pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir -r requirements.txt --break-system-packages || pip install --no-cache-dir -r requirements.txt
 
 # Recopilar archivos estáticos
 echo "📁 Recopilando archivos estáticos..."
