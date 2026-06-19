@@ -21,11 +21,6 @@ __pycache__/
 *.swp
 *.swo
 
-# Ignorar archivos de medios subidos por usuarios
-
-
-# Ignorar archivos estáticos generados automáticamente
-
 
 # Ignorar configuraciones de IDEs
 .vscode/
