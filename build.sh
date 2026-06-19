@@ -32,3 +32,7 @@ echo "📁 Verificando style.css:"
 ls -la staticfiles/css/style.css || echo "⚠️ El archivo style.css no existe"
 
 echo "✅ Build completado exitosamente!"
+echo "📁 Copiando staticfiles a la raíz para Vercel..."
+cp -r staticfiles/* ./
+echo "📁 Verificando archivos en la raíz:"
+ls -la css/
