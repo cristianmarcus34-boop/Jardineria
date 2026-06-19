@@ -47,10 +47,8 @@
                 <div class="form-group-premium" data-aos="fade-up" data-aos-delay="100">
                     <div class="form-field-wrapper">
                         <i class="fas fa-user form-field-icon"></i>
-                        {{ form.nombre }}
-                        <label for="{{ form.nombre.id_for_label }}" class="form-label-float">
-                            Nombre completo
-                        </label>
+                        <input type="text" name="nombre" id="id_nombre" class="form-control" placeholder=" " required>
+                        <label for="id_nombre" class="form-label-float">Nombre completo</label>
                         <div class="form-field-line"></div>
                         <div class="form-field-error">
                             <i class="fas fa-exclamation-circle"></i>
@@ -63,10 +61,8 @@
                 <div class="form-group-premium" data-aos="fade-up" data-aos-delay="200">
                     <div class="form-field-wrapper">
                         <i class="fas fa-phone form-field-icon"></i>
-                        {{ form.telefono }}
-                        <label for="{{ form.telefono.id_for_label }}" class="form-label-float">
-                            Teléfono
-                        </label>
+                        <input type="tel" name="telefono" id="id_telefono" class="form-control" placeholder=" " required>
+                        <label for="id_telefono" class="form-label-float">Teléfono</label>
                         <div class="form-field-line"></div>
                         <div class="form-field-error">
                             <i class="fas fa-exclamation-circle"></i>
@@ -79,10 +75,8 @@
                 <div class="form-group-premium" data-aos="fade-up" data-aos-delay="300">
                     <div class="form-field-wrapper">
                         <i class="fas fa-map-marker-alt form-field-icon"></i>
-                        {{ form.direccion }}
-                        <label for="{{ form.direccion.id_for_label }}" class="form-label-float">
-                            Dirección
-                        </label>
+                        <input type="text" name="direccion" id="id_direccion" class="form-control" placeholder=" " required>
+                        <label for="id_direccion" class="form-label-float">Dirección</label>
                         <div class="form-field-line"></div>
                         <div class="form-field-error">
                             <i class="fas fa-exclamation-circle"></i>
@@ -95,10 +89,8 @@
                 <div class="form-group-premium" data-aos="fade-up" data-aos-delay="400">
                     <div class="form-field-wrapper textarea-wrapper">
                         <i class="fas fa-comment form-field-icon"></i>
-                        {{ form.mensaje }}
-                        <label for="{{ form.mensaje.id_for_label }}" class="form-label-float">
-                            Mensaje
-                        </label>
+                        <textarea name="mensaje" id="id_mensaje" class="form-control" placeholder=" " rows="4" required></textarea>
+                        <label for="id_mensaje" class="form-label-float">Mensaje</label>
                         <div class="form-field-line"></div>
                         <div class="form-field-error">
                             <i class="fas fa-exclamation-circle"></i>
@@ -180,7 +172,6 @@
 
         function validateField(field) {
             const wrapper = field.closest('.form-field-wrapper');
-            const error = wrapper.querySelector('.form-field-error');
             
             if (field.checkValidity()) {
                 field.classList.remove('is-invalid');
@@ -201,19 +192,16 @@
                 event.preventDefault();
                 event.stopPropagation();
                 
-                // Marcar todos los campos inválidos
                 inputs.forEach(input => {
                     validateField(input);
                 });
                 
-                // Scroll al primer error
                 const firstError = form.querySelector('.is-invalid');
                 if (firstError) {
                     firstError.focus();
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
-                // Mostrar loader
                 btnText.style.display = 'none';
                 btnLoader.style.display = 'flex';
                 submitBtn.disabled = true;
@@ -227,7 +215,6 @@
         document.querySelectorAll('.form-field-wrapper input, .form-field-wrapper textarea').forEach(input => {
             // Verificar si ya tiene valor al cargar
             if (input.value.trim() !== '') {
-                input.classList.add('filled');
                 const label = input.closest('.form-field-wrapper').querySelector('.form-label-float');
                 if (label) label.classList.add('active');
             }
@@ -247,14 +234,11 @@
             });
 
             input.addEventListener('input', function() {
+                const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
                 if (this.value.trim() !== '') {
-                    this.classList.add('filled');
-                    const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
                     if (label) label.classList.add('active');
                 } else {
-                    this.classList.remove('filled');
                     if (!this.matches(':focus')) {
-                        const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
                         if (label) label.classList.remove('active');
                     }
                 }

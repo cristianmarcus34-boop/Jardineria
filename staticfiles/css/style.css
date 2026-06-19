@@ -102,8 +102,6 @@ a {
     background: var(--color-green-dark);
 }
 
-
-
 /* ============================= */
 /* NAVBAR GLASS */
 /* ============================= */
@@ -2708,7 +2706,7 @@ a {
 }
 
 /* ============================================================ */
-/* FORM FIELDS */
+/* FORM FIELDS - CORREGIDO */
 /* ============================================================ */
 .form-group-premium {
     margin-bottom: 28px;
@@ -2735,10 +2733,11 @@ a {
     transform: none;
 }
 
+/* ===== INPUTS ===== */
 .form-field-wrapper input,
 .form-field-wrapper textarea {
     width: 100%;
-    padding: 18px 16px 10px 48px;
+    padding: 16px 16px 8px 48px;
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-sm);
     font-size: 1rem;
@@ -2749,12 +2748,14 @@ a {
     color: var(--color-gray-900);
     position: relative;
     z-index: 1;
+    height: 56px;
 }
 
 .form-field-wrapper textarea {
     min-height: 120px;
     resize: vertical;
-    padding-top: 28px;
+    padding-top: 24px;
+    height: auto;
 }
 
 .form-field-wrapper input:focus,
@@ -2778,7 +2779,18 @@ a {
     display: flex;
 }
 
-/* Label flotante */
+/* Placeholder transparente para que funcione el label flotante */
+.form-field-wrapper input::placeholder,
+.form-field-wrapper textarea::placeholder {
+    color: transparent;
+}
+
+.form-field-wrapper input:focus::placeholder,
+.form-field-wrapper textarea:focus::placeholder {
+    color: var(--color-gray-400);
+}
+
+/* ===== LABEL FLOTANTE ===== */
 .form-label-float {
     position: absolute;
     left: 48px;
@@ -2791,22 +2803,25 @@ a {
     z-index: 2;
     background: transparent;
     padding: 0 4px;
+    line-height: 1;
 }
 
 .form-field-wrapper.textarea-wrapper .form-label-float {
-    top: 20px;
+    top: 22px;
     transform: none;
 }
 
+/* Label activo (cuando el input tiene focus o texto) */
 .form-field-wrapper.focused .form-label-float,
 .form-field-wrapper .form-label-float.active {
     top: -2px;
     left: 44px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--color-green);
     background: var(--color-white);
     padding: 0 8px;
     transform: none;
+    z-index: 3;
 }
 
 .form-field-wrapper.textarea-wrapper.focused .form-label-float,
@@ -2814,7 +2829,7 @@ a {
     top: -2px;
 }
 
-/* Field line */
+/* ===== FIELD LINE ===== */
 .form-field-line {
     position: absolute;
     bottom: 0;
@@ -2831,7 +2846,7 @@ a {
     left: 0;
 }
 
-/* Error message */
+/* ===== ERROR MESSAGE ===== */
 .form-field-error {
     display: none;
     align-items: center;
