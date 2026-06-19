@@ -3,65 +3,110 @@
 
 {% block content %}
 
-<!-- ============================== -->
-<!-- HERO SECTION -->
-<!-- ============================== -->
-<section class="hero">
+<!-- ============================================================ -->
+<!-- HERO CINEMÁTICO CON PARALLAX Y GLOW -->
+<!-- ============================================================ -->
+<section class="hero-cinematic" id="inicio">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-particles" id="heroParticles"></div>
     <div class="container">
         <div class="hero-content">
-            <div class="hero-text">
-                <span class="hero-badge">✦ Expertos desde 2020</span>
+            <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+                <span class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Expertos desde 2020
+                </span>
                 <h1 class="hero-title">
-                    Transformamos <br />
-                    <span class="highlight">tus espacios</span> exteriores
+                    Transformamos<br>
+                    <span class="highlight-gradient">tus espacios</span>
+                    <span class="hero-underline">exteriores</span>
                 </h1>
                 <p class="hero-subtitle">
                     Especialistas en jardinería, mantenimiento de piscinas y diseño de exteriores.
                     Calidad y profesionalismo garantizados.
                 </p>
                 <div class="hero-buttons">
-                    <a href="{% url 'pedido' %}" class="btn-primary">
+                    <a href="{% url 'pedido' %}" class="btn-primary btn-3d">
                         <i class="fas fa-whatsapp"></i> Contactar ahora
+                        <span class="btn-shimmer"></span>
                     </a>
-                    <a href="#servicios" class="btn-secondary">
+                    <a href="#servicios" class="btn-secondary btn-arrow">
                         Ver servicios <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="150">0</span>
+                        <span class="stat-label">Clientes felices</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="4.9">0</span>
+                        <span class="stat-label">Calificación</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Premios</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="{% static 'img/jardin_home.jfif' %}" alt="Jardín y Piscinas" class="hero-img">
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="hero-image-wrapper">
+                    <img src="{% static 'img/jardin_home.jfif' %}" alt="Jardín y Piscinas" class="hero-img">
+                    <div class="hero-image-glow"></div>
+                </div>
                 <div class="hero-floating-card">
-                    <i class="fas fa-star"></i>
+                    <div class="floating-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
                     <div>
                         <strong>4.9/5</strong>
                         <span>+150 clientes felices</span>
                     </div>
                 </div>
+                <div class="hero-floating-card second">
+                    <div class="floating-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div>
+                        <strong>12</strong>
+                        <span>Premios recibidos</span>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>Desplázate</span>
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- SERVICIOS -->
-<!-- ============================== -->
-<section class="servicios" id="servicios">
+<!-- ============================================================ -->
+<!-- SERVICIOS CON EFECTO GLASSMORPHISM -->
+<!-- ============================================================ -->
+<section class="servicios-premium" id="servicios">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Nuestros Servicios</span>
-            <h2 class="section-title">Lo que <span class="highlight">ofrecemos</span></h2>
-            <p class="section-subtitle">Soluciones completas para el cuidado y mantenimiento de tus espacios exteriores</p>
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">✦ Servicios</span>
+            <h2 class="section-title">Lo que <span class="highlight-gradient">ofrecemos</span></h2>
+            <p class="section-subtitle">Soluciones integrales para el cuidado y embellecimiento de tus espacios exteriores</p>
         </div>
 
-        <div class="servicios-grid">
+        <div class="servicios-grid-premium">
             {% for servicio in servicios %}
-            <div class="servicio-card">
-                <div class="servicio-icon">
+            <div class="servicio-card-premium" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="card-glow"></div>
+                <div class="card-number">{{ forloop.counter|stringformat:"02d" }}</div>
+                <div class="servicio-icon-premium">
                     <i class="{{ servicio.icono }}"></i>
                 </div>
                 <h3>{{ servicio.titulo }}</h3>
                 <p>{{ servicio.descripcion }}</p>
-                <a href="{% url 'pedido' %}" class="servicio-link">
+                <a href="{% url 'pedido' %}" class="servicio-link-premium">
                     Solicitar <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -70,21 +115,24 @@
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- BENEFICIOS -->
-<!-- ============================== -->
-<section class="beneficios">
+<!-- ============================================================ -->
+<!-- BENEFICIOS CON ÍCONOS ANIMADOS -->
+<!-- ============================================================ -->
+<section class="beneficios-premium">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">¿Por qué elegirnos?</span>
-            <h2 class="section-title">Nuestros <span class="highlight">beneficios</span></h2>
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">✦ Beneficios</span>
+            <h2 class="section-title">¿Por qué <span class="highlight-gradient">elegirnos</span>?</h2>
         </div>
 
-        <div class="beneficios-grid">
+        <div class="beneficios-grid-premium">
             {% for beneficio in beneficios %}
-            <div class="beneficio-item">
-                <div class="beneficio-icon">
+            <div class="beneficio-item-premium" data-aos="flip-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="beneficio-icon-premium">
                     <i class="{{ beneficio.icono }}"></i>
+                    <svg class="icon-ring" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" />
+                    </svg>
                 </div>
                 <h4>{{ beneficio.titulo }}</h4>
                 <p>{{ beneficio.descripcion }}</p>
@@ -94,119 +142,94 @@
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- TESTIMONIOS -->
-<!-- ============================== -->
-<section class="testimonios" id="testimonios">
+<!-- ============================================================ -->
+<!-- TESTIMONIOS CON EFECTO MARQUEE -->
+<!-- ============================================================ -->
+<section class="testimonios-premium" id="testimonios">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Testimonios</span>
-            <h2 class="section-title">Lo que dicen <span class="highlight">nuestros clientes</span></h2>
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">✦ Testimonios</span>
+            <h2 class="section-title">Lo que dicen <span class="highlight-gradient">nuestros clientes</span></h2>
         </div>
 
-        <div class="testimonios-grid">
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+        <div class="testimonios-marquee">
+            <div class="marquee-track">
+                {% for testimonio in testimonios %}
+                <div class="testimonio-card-premium">
+                    <div class="testimonio-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonio-text">"{{ testimonio.texto }}"</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">
+                            {{ testimonio.nombre|slice:":1" }}
+                        </div>
+                        <div>
+                            <strong>{{ testimonio.nombre }}</strong>
+                            <span>{{ testimonio.rol }}</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="testimonio-text">
-                    "Excelente servicio, mi jardín nunca había estado tan bien cuidado. 100% recomendado."
-                </p>
-                <div class="testimonio-author">
-                    <strong>Diego Buchamer</strong>
-                    <span>Cliente satisfecho</span>
-                </div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonio-text">
-                    "Muy profesionales, el mantenimiento de mi piscina ha sido impecable. Volveré a contratarlos."
-                </p>
-                <div class="testimonio-author">
-                    <strong>María Juarez</strong>
-                    <span>Cliente satisfecho</span>
-                </div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonio-text">
-                    "Increíble trabajo en la poda de árboles y decoración del jardín. Mis vecinos están impresionados."
-                </p>
-                <div class="testimonio-author">
-                    <strong>Dario López</strong>
-                    <span>Cliente satisfecho</span>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- CTA - LLAMADA A LA ACCIÓN -->
-<!-- ============================== -->
-<section class="cta-section">
+<!-- ============================================================ -->
+<!-- CTA CON EFECTO PARALLAX -->
+<!-- ============================================================ -->
+<section class="cta-premium">
+    <div class="cta-bg-pattern"></div>
     <div class="container">
-        <div class="cta-content">
-            <h2>¿Listo para transformar <span class="highlight">tu espacio</span>?</h2>
-            <p>Contáctanos ahora y obtené un presupuesto personalizado para tus necesidades.</p>
-            <a href="{% url 'pedido' %}" class="btn-primary btn-large">
+        <div class="cta-content" data-aos="zoom-in" data-aos-duration="800">
+            <h2>¿Listo para transformar <span class="highlight-gradient">tu espacio</span>?</h2>
+            <p>Contáctanos y obtené un presupuesto personalizado para tus necesidades.</p>
+            <a href="{% url 'pedido' %}" class="btn-primary btn-3d btn-large">
                 <i class="fas fa-clipboard-list"></i> Solicitar Servicio
+                <span class="btn-shimmer"></span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- CONTACTO -->
-<!-- ============================== -->
-<section class="contacto" id="contacto">
+<!-- ============================================================ -->
+<!-- CONTACTO CON MAPA DE FONDO -->
+<!-- ============================================================ -->
+<section class="contacto-premium" id="contacto">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Contacto</span>
-            <h2 class="section-title">¿Hablamos?</h2>
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">✦ Contacto</span>
+            <h2 class="section-title">¿<span class="highlight-gradient">Hablamos</span>?</h2>
             <p class="section-subtitle">Estamos listos para atender tus consultas y ofrecerte el mejor servicio.</p>
         </div>
 
-        <div class="contacto-grid">
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <div class="contacto-icon">
+        <div class="contacto-grid-premium" data-aos="fade-up" data-aos-delay="100">
+            <div class="contacto-info-premium">
+                <div class="contacto-item-premium">
+                    <div class="contacto-icon-premium">
                         <i class="fas fa-phone"></i>
                     </div>
                     <div>
                         <strong>Teléfono</strong>
-                        <span>+54 9 11 2167-4114</span>
+                        <a href="tel:+5491121674114">+54 9 11 2167-4114</a>
                     </div>
                 </div>
-                <div class="contacto-item">
-                    <div class="contacto-icon">
+                <div class="contacto-item-premium">
+                    <div class="contacto-icon-premium">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div>
                         <strong>Email</strong>
-                        <span>info@jardinypiscinas.com</span>
+                        <a href="mailto:info@jardinypiscinas.com">info@jardinypiscinas.com</a>
                     </div>
                 </div>
-                <div class="contacto-item">
-                    <div class="contacto-icon">
+                <div class="contacto-item-premium">
+                    <div class="contacto-icon-premium">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
@@ -214,12 +237,17 @@
                         <span>Buenos Aires, Argentina</span>
                     </div>
                 </div>
+                <div class="contacto-social-premium">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
 
-            <div class="contacto-whatsapp">
+            <div class="contacto-whatsapp-premium">
                 <a href="https://wa.me/5491121674114?text=¡Hola!%20Gracias%20por%20contactarnos.%20¿En%20qué%20podemos%20ayudarte?" 
                    target="_blank" 
-                   class="whatsapp-card">
+                   class="whatsapp-card-premium">
                     <i class="fab fa-whatsapp"></i>
                     <div>
                         <span>¿Necesitas ayuda?</span>
@@ -232,22 +260,81 @@
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- LIGHTBOX PARA IMÁGENES -->
-<!-- ============================== -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" class="lightbox-content">
-</div>
-
 <script>
-    function openLightbox(imgElement) {
-        document.getElementById("lightbox").style.display = "flex";
-        document.getElementById("lightbox-img").src = imgElement.src;
+    // ============================================================ //
+    // HERO PARALLAX
+    // ============================================================ //
+    document.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero-cinematic');
+        if (hero) {
+            hero.style.backgroundPositionY = scrolled * 0.3 + 'px';
+        }
+    });
+
+    // ============================================================ //
+    // CONTADOR DE ESTADÍSTICAS
+    // ============================================================ //
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseFloat(counter.dataset.count);
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOutQuad = 1 - Math.pow(1 - progress, 3);
+                const current = easeOutQuad * target;
+                
+                if (target % 1 === 0) {
+                    counter.textContent = Math.round(current);
+                } else {
+                    counter.textContent = current.toFixed(1);
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+            requestAnimationFrame(updateCounter);
+        });
     }
 
-    function closeLightbox() {
-        document.getElementById("lightbox").style.display = "none";
+    // ============================================================ //
+    // DETECTAR CUANDO EL HERO ES VISIBLE
+    // ============================================================ //
+    const heroSection = document.querySelector('.hero-cinematic');
+    if (heroSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(heroSection);
+    }
+
+    // ============================================================ //
+    // PARTÍCULAS EN EL HERO
+    // ============================================================ //
+    const particlesContainer = document.getElementById('heroParticles');
+    if (particlesContainer) {
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
     }
 </script>
 
