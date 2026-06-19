@@ -104,34 +104,105 @@
     <!-- ============================== -->
     <!-- FOOTER MODERNO -->
     <!-- ============================== -->
-    <footer class="footer">
+    <!-- ============================== -->
+    <!-- FOOTER MOBILE-FIRST -->
+    <!-- ============================== -->
+    <footer class="footer-mobile-first">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
+            <!-- Marca -->
+            <div class="footer-brand-mobile">
+                <div class="brand-icon">
                     <i class="fas fa-leaf"></i>
-                    <span>Jardín & Piscinas</span>
-                    <p>Transformando espacios exteriores desde 2020</p>
                 </div>
-
-                <div class="footer-links">
-                    <a href="/">Inicio</a>
-                    <a href="{% url 'home' %}#servicios">Servicios</a>
-                    <a href="{% url 'galeria' %}">Galería</a>
-                    <a href="{% url 'home' %}#contacto">Contacto</a>
-                </div>
-
-                <div class="footer-social">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <div>
+                    <span class="brand-name">Jardín &amp; <span class="highlight">Piscinas</span></span>
+                    <span class="brand-tag">Transformando espacios desde 2020</span>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; {% now "Y" %} Jardinería y Piscinas. Todos los derechos reservados.</p>
-                <a href="https://agencia-powa.vercel.app" target="_blank">
-                    <i class="fas fa-laptop-code"></i> Desarrollado por Powa-Agencia Digital
+            <!-- Enlaces rápidos (acordeón móvil) -->
+            <div class="footer-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span>Navegación</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                            <li><a href="{% url 'home' %}#servicios"><i class="fas fa-cogs"></i> Servicios</a></li>
+                            <li><a href="{% url 'galeria' %}"><i class="fas fa-images"></i> Galería</a></li>
+                            <li><a href="{% url 'home' %}#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span>Contacto</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+5491121674114">+54 9 11 2167-4114</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@jardinypiscinas.com">info@jardinypiscinas.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Buenos Aires, Argentina</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span>Redes Sociales</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="social-row">
+                            <a href="#" aria-label="Instagram" class="social-icon insta">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" aria-label="Facebook" class="social-icon fb">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" aria-label="YouTube" class="social-icon yt">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" aria-label="WhatsApp" class="social-icon ws">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter (mini) -->
+            <div class="footer-newsletter-mobile">
+                <p><i class="fas fa-envelope"></i> Suscríbete para novedades</p>
+                <form class="newsletter-form-mobile">
+                    <input type="email" placeholder="Tu email" aria-label="Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom-mobile">
+                <p>&copy; {% now "Y" %} Jardinería y Piscinas</p>
+                <div class="bottom-links">
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                    <a href="#">Cookies</a>
+                </div>
+                <a href="https://agencia-powa.vercel.app" target="_blank" class="credit-link">
+                    <i class="fas fa-laptop-code"></i> Agencia Powa
                 </a>
             </div>
         </div>
@@ -165,6 +236,27 @@
             scrollTimer = setTimeout(() => {
                 $btn.removeClass('whatsapp-scrolling');
             }, 200);
+        });
+
+        // ============================== //
+        // ACORDEÓN DEL FOOTER - MOBILE FIRST
+        // ============================== //
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                const body = this.nextElementSibling;
+
+                // Opcional: cerrar otros acordeones
+                // document.querySelectorAll('.accordion-header').forEach(h => {
+                //     if (h !== this) {
+                //         h.setAttribute('aria-expanded', 'false');
+                //         h.nextElementSibling.classList.remove('open');
+                //     }
+                // });
+
+                this.setAttribute('aria-expanded', !isExpanded);
+                body.classList.toggle('open');
+            });
         });
     </script>
 
