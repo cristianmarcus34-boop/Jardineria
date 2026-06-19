@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 set -o errexit
 
 echo "🚀 Iniciando build para Vercel..."
 
-# Crear requirements.txt con psycopg2-binary en lugar de psycopg2
+# Crear requirements.txt
 echo "📝 Creando requirements.txt..."
 cat > requirements.txt << 'EOF'
 asgiref==3.8.1
@@ -29,6 +29,6 @@ pip install --no-cache-dir -r requirements.txt --break-system-packages
 
 # Recopilar archivos estáticos
 echo "📁 Recopilando archivos estáticos..."
-python manage.py collectstatic --no-input || echo "⚠️ Error en collectstatic, pero continuando..."
+python manage.py collectstatic --no-input
 
 echo "✅ Build completado exitosamente!"
