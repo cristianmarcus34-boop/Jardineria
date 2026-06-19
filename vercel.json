@@ -8,7 +8,7 @@
   "rewrites": [
     {
       "source": "/static/(.*)",
-      "destination": "/static/$1"
+      "destination": "/staticfiles/$1"
     },
     {
       "source": "/(.*)",
