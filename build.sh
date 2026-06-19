@@ -29,6 +29,10 @@ pip install --no-cache-dir -r requirements.txt --break-system-packages
 
 # Recopilar archivos estáticos
 echo "📁 Recopilando archivos estáticos..."
-python manage.py collectstatic --no-input
+python manage.py collectstatic --no-input --clear
+
+# Mostrar qué archivos se copiaron
+echo "📁 Contenido de staticfiles:"
+ls -la staticfiles/ || echo "⚠️ La carpeta staticfiles no existe"
 
 echo "✅ Build completado exitosamente!"
