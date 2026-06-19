@@ -3,66 +3,286 @@
 
 {% block content %}
 
-
-<div class="container mt-5 img">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-lg">
-                <div class="card-header bg-success text-white text-center">
-                    <h2>Realiza tu Pedido</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post" class="needs-validation" novalidate>
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre Completo:</label>
-                            {{ form.nombre }}
-                            <div class="invalid-feedback">
-                                Por favor, ingresa tu nombre completo.
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="{{ form.telefono.id_for_label }}" class="form-label">Teléfono:</label>
-                            {{ form.telefono }}
-                            <div class="invalid-feedback">
-                                Por favor, ingresa tu número de teléfono.
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="{{ form.direccion.id_for_label }}" class="form-label">Dirección:</label>
-                            {{ form.direccion }}
-                            <div class="invalid-feedback">
-                                Por favor, ingresa tu dirección.
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="{{ form.mensaje.id_for_label }}" class="form-label">Mensaje:</label>
-                            {{ form.mensaje }}
-                            <div class="invalid-feedback">
-                                Por favor, ingresa un mensaje.
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Enviar Pedido</button>
-                    </form>
-                </div>
-            </div>
+<!-- ============================================================ -->
+<!-- HERO DEL FORMULARIO -->
+<!-- ============================================================ -->
+<section class="form-hero-premium">
+    <div class="hero-bg-glow"></div>
+    <div class="container">
+        <div class="form-hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="form-hero-badge">
+                <span class="badge-dot"></span>
+                ✦ Solicitud de servicio
+            </span>
+            <h1 class="form-hero-title">
+                Contanos sobre <span class="highlight-gradient">tu proyecto</span>
+            </h1>
+            <p class="form-hero-subtitle">
+                Completá el formulario y te contactaremos a la brevedad para brindarte la mejor solución.
+            </p>
         </div>
     </div>
-</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FORMULARIO PREMIUM -->
+<!-- ============================================================ -->
+<section class="form-section-premium">
+    <div class="container">
+        <div class="form-wrapper-premium" data-aos="fade-up" data-aos-duration="800">
+            <div class="form-header-premium">
+                <div class="form-header-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <div>
+                    <h2>Realiza tu Pedido</h2>
+                    <p>Completá los datos y te responderemos en menos de 24 horas</p>
+                </div>
+            </div>
+
+            <form method="post" class="form-premium" id="pedidoForm" novalidate>
+                {% csrf_token %}
+
+                <!-- Campo: Nombre -->
+                <div class="form-group-premium" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-field-wrapper">
+                        <i class="fas fa-user form-field-icon"></i>
+                        {{ form.nombre }}
+                        <label for="{{ form.nombre.id_for_label }}" class="form-label-float">
+                            Nombre completo
+                        </label>
+                        <div class="form-field-line"></div>
+                        <div class="form-field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Por favor, ingresa tu nombre completo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo: Teléfono -->
+                <div class="form-group-premium" data-aos="fade-up" data-aos-delay="200">
+                    <div class="form-field-wrapper">
+                        <i class="fas fa-phone form-field-icon"></i>
+                        {{ form.telefono }}
+                        <label for="{{ form.telefono.id_for_label }}" class="form-label-float">
+                            Teléfono
+                        </label>
+                        <div class="form-field-line"></div>
+                        <div class="form-field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Por favor, ingresa tu número de teléfono.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo: Dirección -->
+                <div class="form-group-premium" data-aos="fade-up" data-aos-delay="300">
+                    <div class="form-field-wrapper">
+                        <i class="fas fa-map-marker-alt form-field-icon"></i>
+                        {{ form.direccion }}
+                        <label for="{{ form.direccion.id_for_label }}" class="form-label-float">
+                            Dirección
+                        </label>
+                        <div class="form-field-line"></div>
+                        <div class="form-field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Por favor, ingresa tu dirección.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo: Mensaje -->
+                <div class="form-group-premium" data-aos="fade-up" data-aos-delay="400">
+                    <div class="form-field-wrapper textarea-wrapper">
+                        <i class="fas fa-comment form-field-icon"></i>
+                        {{ form.mensaje }}
+                        <label for="{{ form.mensaje.id_for_label }}" class="form-label-float">
+                            Mensaje
+                        </label>
+                        <div class="form-field-line"></div>
+                        <div class="form-field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Por favor, ingresa un mensaje.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de envío -->
+                <div class="form-submit-premium" data-aos="fade-up" data-aos-delay="500">
+                    <button type="submit" class="btn-submit-premium" id="submitBtn">
+                        <span class="btn-text">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Pedido
+                        </span>
+                        <span class="btn-loader" style="display:none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Enviando...
+                        </span>
+                        <span class="btn-shimmer"></span>
+                    </button>
+                    <p class="form-footer-text">
+                        <i class="fas fa-shield-alt"></i>
+                        Tus datos están seguros. No compartiremos tu información.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHATSAPP FLOTANTE EN EL FORMULARIO -->
+<!-- ============================================================ -->
+<section class="form-whatsapp-premium">
+    <div class="container">
+        <div class="whatsapp-banner-premium" data-aos="fade-up" data-aos-delay="600">
+            <div class="whatsapp-banner-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+                <h4>¿Prefieres contacto rápido?</h4>
+                <p>Escríbenos por WhatsApp y te atendemos al instante</p>
+            </div>
+            <a href="https://wa.me/5491121674114?text=¡Hola!%20Quiero%20realizar%20un%20pedido%20de%20servicios" 
+               target="_blank" 
+               class="whatsapp-banner-btn">
+                <i class="fab fa-whatsapp"></i>
+                Chatear ahora
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
 <script>
-    (function () {
+    // ============================================================ //
+    // VALIDACIÓN DEL FORMULARIO
+    // ============================================================ //
+    (function() {
         'use strict';
-        var forms = document.querySelectorAll('.needs-validation');
-        Array.prototype.slice.call(forms).forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+        const form = document.getElementById('pedidoForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoader = submitBtn.querySelector('.btn-loader');
+
+        // Validación en tiempo real
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            input.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    validateField(this);
                 }
-                form.classList.add('was-validated');
-            }, false);
+            });
         });
+
+        function validateField(field) {
+            const wrapper = field.closest('.form-field-wrapper');
+            const error = wrapper.querySelector('.form-field-error');
+            
+            if (field.checkValidity()) {
+                field.classList.remove('is-invalid');
+                field.classList.add('is-valid');
+                wrapper.classList.remove('error');
+                wrapper.classList.add('valid');
+            } else {
+                field.classList.add('is-invalid');
+                field.classList.remove('is-valid');
+                wrapper.classList.add('error');
+                wrapper.classList.remove('valid');
+            }
+        }
+
+        // Submit
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                // Marcar todos los campos inválidos
+                inputs.forEach(input => {
+                    validateField(input);
+                });
+                
+                // Scroll al primer error
+                const firstError = form.querySelector('.is-invalid');
+                if (firstError) {
+                    firstError.focus();
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                // Mostrar loader
+                btnText.style.display = 'none';
+                btnLoader.style.display = 'flex';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+            }
+        });
+
+        // ============================================================ //
+        // EFECTO LABEL FLOTANTE
+        // ============================================================ //
+        document.querySelectorAll('.form-field-wrapper input, .form-field-wrapper textarea').forEach(input => {
+            // Verificar si ya tiene valor al cargar
+            if (input.value.trim() !== '') {
+                input.classList.add('filled');
+                const label = input.closest('.form-field-wrapper').querySelector('.form-label-float');
+                if (label) label.classList.add('active');
+            }
+
+            input.addEventListener('focus', function() {
+                const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
+                if (label) label.classList.add('active');
+                this.closest('.form-field-wrapper').classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
+                if (this.value.trim() === '') {
+                    if (label) label.classList.remove('active');
+                }
+                this.closest('.form-field-wrapper').classList.remove('focused');
+            });
+
+            input.addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.add('filled');
+                    const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
+                    if (label) label.classList.add('active');
+                } else {
+                    this.classList.remove('filled');
+                    if (!this.matches(':focus')) {
+                        const label = this.closest('.form-field-wrapper').querySelector('.form-label-float');
+                        if (label) label.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // ============================================================ //
+        // EFECTO DE PARTÍCULAS EN EL HERO
+        // ============================================================ //
+        const particlesContainer = document.querySelector('.form-hero-premium .hero-bg-glow');
+        if (particlesContainer) {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.position = 'absolute';
+                particle.style.background = 'rgba(34, 197, 94, 0.2)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.animation = 'particleFloat linear infinite';
+                particlesContainer.appendChild(particle);
+            }
+        }
     })();
 </script>
 
