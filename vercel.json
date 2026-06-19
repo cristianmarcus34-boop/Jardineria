@@ -7,16 +7,25 @@
                 "maxLambdaSize": "15mb",
                 "runtime": "python3.12"
             }
-        },
-        {
-            "src": "staticfiles",
-            "use": "@vercel/static",
-            "config": {
-                "directory": "staticfiles"
-            }
         }
     ],
     "routes": [
+        {
+            "src": "/css/(.*)",
+            "dest": "/css/$1"
+        },
+        {
+            "src": "/img/(.*)",
+            "dest": "/img/$1"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/js/$1"
+        },
+        {
+            "src": "/admin/(.*)",
+            "dest": "/admin/$1"
+        },
         {
             "src": "/(.*)",
             "dest": "wsgi.py"
