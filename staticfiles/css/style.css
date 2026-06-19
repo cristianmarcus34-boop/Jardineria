@@ -1402,4 +1402,170 @@ a {
     .beneficios-grid {
         grid-template-columns: 1fr;
     }
+
+    /* ============================= */
+/* CURSOR PERSONALIZADO */
+/* ============================= */
+.custom-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(34, 197, 94, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, border-color 0.3s ease, width 0.3s, height 0.3s;
+    backdrop-filter: blur(4px);
+    background: rgba(34, 197, 94, 0.05);
+}
+
+.custom-cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease;
+}
+
+@media (max-width: 768px) {
+    .custom-cursor,
+    .custom-cursor-dot {
+        display: none;
+    }
+}
+
+/* ============================= */
+/* NAVBAR GLASS */
+/* ============================= */
+.navbar-glass {
+    background: rgba(10, 15, 30, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-glass.navbar-scrolled {
+    background: rgba(10, 15, 30, 0.9) !important;
+    backdrop-filter: blur(30px) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-link:hover .nav-hover-line,
+.nav-link.active .nav-hover-line {
+    width: 60%;
+}
+
+/* Botón presupuesto con glow */
+.btn-presupuesto {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.btn-presupuesto:hover .btn-glow {
+    opacity: 1;
+}
+
+/* ============================= */
+/* ONDAS EN EL FOOTER */
+/* ============================= */
+.footer-waves {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    margin-top: -80px;
+}
+
+.footer-waves svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wave {
+    fill: #0a0f1e;
+    opacity: 0.4;
+    animation: waveMove 6s ease-in-out infinite;
+}
+
+.wave1 {
+    opacity: 0.6;
+    animation-delay: 0s;
+}
+
+.wave2 {
+    opacity: 0.3;
+    animation-delay: -2s;
+}
+
+.wave3 {
+    opacity: 0.5;
+    animation-delay: -4s;
+}
+
+@keyframes waveMove {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-10%); }
+}
+
+/* ============================= */
+/* SOCIAL TOOLTIPS */
+/* ============================= */
+.social-icon {
+    position: relative;
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.social-icon:hover .social-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
 }

@@ -10,11 +10,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico.png' %}">
 
-    <!-- Google Fonts - INTER (más moderno) -->
+    <!-- Google Fonts - INTER + Playfair Display (más elegante) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,10 +21,13 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- AOS - Librería de animaciones al scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- ESTILOS PROPIOS (UNIFICADOS) -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/galeria.css' %}"> <!-- ← AGREGÁ ESTA LÍNEA -->
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
     <link rel="stylesheet" href="{% static 'css/pedido_form.css' %}">
 
     {% block extra_css %}{% endblock %}
@@ -33,13 +35,32 @@
 
 <body>
     <!-- ============================== -->
-    <!-- NAVBAR MODERNO -->
+    <!-- CURSOR PERSONALIZADO (efecto sofisticado) -->
     <!-- ============================== -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- ============================== -->
+    <!-- NAVBAR ULTRA MODERNO -->
+    <!-- ============================== -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <i class="fas fa-leaf"></i>
-                <span>Jardín & Piscinas</span>
+                <div class="brand-logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="url(#brandGradient)"/>
+                        <path d="M16 8C12 8 8 12 8 16C8 20 12 24 16 24C20 24 24 20 24 16C24 12 20 8 16 8Z" stroke="white" stroke-width="1.5"/>
+                        <path d="M16 11C13.5 11 11 13.5 11 16C11 18.5 13.5 21 16 21C18.5 21 21 18.5 21 16C21 13.5 18.5 11 16 11Z" stroke="white" stroke-width="1.5"/>
+                        <path d="M12 16L14.5 18.5L20 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="brandGradient" x1="0" y1="0" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#22c55e"/>
+                                <stop offset="100%" stop-color="#16a34a"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Jardín &amp; <span class="highlight">Piscinas</span></span>
+                </div>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -52,27 +73,32 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">
                             <i class="fas fa-home"></i> Inicio
+                            <span class="nav-hover-line"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}#servicios">
                             <i class="fas fa-cogs"></i> Servicios
+                            <span class="nav-hover-line"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/galeria/' %}active{% endif %}"
                             href="{% url 'galeria' %}">
                             <i class="fas fa-images"></i> Galería
+                            <span class="nav-hover-line"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}#contacto">
                             <i class="fas fa-envelope"></i> Contacto
+                            <span class="nav-hover-line"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'pedido' %}" class="btn-presupuesto">
                             <i class="fas fa-leaf"></i> Presupuesto
+                            <span class="btn-glow"></span>
                         </a>
                     </li>
                 </ul>
@@ -90,10 +116,11 @@
     <!-- ============================== -->
     <!-- WHATSAPP FLOTANTE MODERNO -->
     <!-- ============================== -->
-    <div class="whatsapp-float">
+    <div class="whatsapp-float" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="800">
         <a href="https://wa.me/5491121674114?text=¡Hola!%20Gracias%20por%20contactarnos.%20¿En%20qué%20podemos%20ayudarte?"
             target="_blank" class="whatsapp-btn" aria-label="Chatear por WhatsApp">
             <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-pulse"></span>
         </a>
         <div class="whatsapp-tooltip">
             <span class="whatsapp-tooltip-text">¿Necesitás ayuda?</span>
@@ -102,15 +129,21 @@
     </div>
 
     <!-- ============================== -->
-    <!-- FOOTER MODERNO -->
-    <!-- ============================== -->
-    <!-- ============================== -->
-    <!-- FOOTER MOBILE-FIRST -->
+    <!-- FOOTER ULTRA MODERNO -->
     <!-- ============================== -->
     <footer class="footer-mobile-first">
+        <!-- Efecto de olas en el footer -->
+        <div class="footer-waves">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0 C300,80 600,20 900,60 C1100,90 1200,30 1200,30 L1200,120 L0,120 Z" class="wave wave1"/>
+                <path d="M0,0 C300,40 600,80 900,40 C1100,10 1200,50 1200,50 L1200,120 L0,120 Z" class="wave wave2"/>
+                <path d="M0,0 C300,60 600,20 900,50 C1100,70 1200,40 1200,40 L1200,120 L0,120 Z" class="wave wave3"/>
+            </svg>
+        </div>
+
         <div class="container">
             <!-- Marca -->
-            <div class="footer-brand-mobile">
+            <div class="footer-brand-mobile" data-aos="fade-up">
                 <div class="brand-icon">
                     <i class="fas fa-leaf"></i>
                 </div>
@@ -122,7 +155,7 @@
 
             <!-- Enlaces rápidos (acordeón móvil) -->
             <div class="footer-accordion">
-                <div class="accordion-item">
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-header" aria-expanded="false">
                         <span>Navegación</span>
                         <i class="fas fa-chevron-down"></i>
@@ -137,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="accordion-item">
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-header" aria-expanded="false">
                         <span>Contacto</span>
                         <i class="fas fa-chevron-down"></i>
@@ -160,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="accordion-item">
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-header" aria-expanded="false">
                         <span>Redes Sociales</span>
                         <i class="fas fa-chevron-down"></i>
@@ -169,15 +202,19 @@
                         <div class="social-row">
                             <a href="#" aria-label="Instagram" class="social-icon insta">
                                 <i class="fab fa-instagram"></i>
+                                <span class="social-tooltip">Instagram</span>
                             </a>
                             <a href="#" aria-label="Facebook" class="social-icon fb">
                                 <i class="fab fa-facebook-f"></i>
+                                <span class="social-tooltip">Facebook</span>
                             </a>
                             <a href="#" aria-label="YouTube" class="social-icon yt">
                                 <i class="fab fa-youtube"></i>
+                                <span class="social-tooltip">YouTube</span>
                             </a>
                             <a href="#" aria-label="WhatsApp" class="social-icon ws">
                                 <i class="fab fa-whatsapp"></i>
+                                <span class="social-tooltip">WhatsApp</span>
                             </a>
                         </div>
                     </div>
@@ -185,7 +222,7 @@
             </div>
 
             <!-- Newsletter (mini) -->
-            <div class="footer-newsletter-mobile">
+            <div class="footer-newsletter-mobile" data-aos="fade-up" data-aos-delay="400">
                 <p><i class="fas fa-envelope"></i> Suscríbete para novedades</p>
                 <form class="newsletter-form-mobile">
                     <input type="email" placeholder="Tu email" aria-label="Email">
@@ -195,10 +232,10 @@
 
             <!-- Bottom Bar -->
             <div class="footer-bottom-mobile">
-                <p>&copy; {% now "Y" %} Jardinería y Piscinas</p>
+                <p>&copy; {% now "Y" %} Jardinería y Piscinas. Todos los derechos reservados.</p>
                 <div class="bottom-links">
-                    <a href="#">Privacidad</a>
-                    <a href="#">Términos</a>
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Términos de uso</a>
                     <a href="#">Cookies</a>
                 </div>
                 <a href="https://agencia-powa.vercel.app" target="_blank" class="credit-link">
@@ -214,8 +251,53 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- AOS - Librería de animaciones al scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        // Efecto de scroll en navbar
+        // ============================== //
+        // AOS - INICIALIZAR ANIMACIONES
+        // ============================== //
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out',
+        });
+
+        // ============================== //
+        // CURSOR PERSONALIZADO
+        // ============================== //
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.custom-cursor-dot');
+
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+
+            document.querySelectorAll('a, button, .btn, .social-icon').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.borderColor = '#22c55e';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
+                    cursorDot.style.opacity = '0';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorDot.style.opacity = '1';
+                });
+            });
+        }
+
+        // ============================== //
+        // EFECTO SCROLL EN NAVBAR
+        // ============================== //
         $(window).on('scroll', function () {
             const $navbar = $('.navbar');
             if ($(this).scrollTop() > 50) {
@@ -225,7 +307,9 @@
             }
         });
 
-        // Efecto de transparencia en WhatsApp al hacer scroll
+        // ============================== //
+        // EFECTO DE TRANSPARENCIA EN WHATSAPP
+        // ============================== //
         let scrollTimer;
         $(window).on('scroll', function () {
             const $btn = $('.whatsapp-float');
@@ -246,16 +330,37 @@
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
                 const body = this.nextElementSibling;
 
-                // Opcional: cerrar otros acordeones
-                // document.querySelectorAll('.accordion-header').forEach(h => {
-                //     if (h !== this) {
-                //         h.setAttribute('aria-expanded', 'false');
-                //         h.nextElementSibling.classList.remove('open');
-                //     }
-                // });
+                // Cerrar otros acordeones
+                document.querySelectorAll('.accordion-header').forEach(h => {
+                    if (h !== this) {
+                        h.setAttribute('aria-expanded', 'false');
+                        h.nextElementSibling.classList.remove('open');
+                    }
+                });
 
                 this.setAttribute('aria-expanded', !isExpanded);
                 body.classList.toggle('open');
+            });
+        });
+
+        // ============================== //
+        // EFECTO DE PARALLAX EN EL HERO
+        // ============================== //
+        $(window).on('scroll', function () {
+            const scrollPos = $(this).scrollTop();
+            $('.hero').css('backgroundPositionY', scrollPos * 0.3 + 'px');
+        });
+
+        // ============================== //
+        // EFECTO GLOW EN BOTONES AL HOVER
+        // ============================== //
+        document.querySelectorAll('.btn-primary, .btn-presupuesto').forEach(btn => {
+            btn.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--mouse-y', y + 'px');
             });
         });
     </script>
