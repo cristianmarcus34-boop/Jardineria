@@ -1,7 +1,8 @@
 ﻿import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR es la carpeta raíz de tu proyecto
+BASE_DIR = Path(__file__).resolve().parent
 
 SECRET_KEY = 'django-insecure-#&!@'
 DEBUG = False
@@ -14,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pedidos',  # 👈 AGREGADO
+    'pedidos',
 ]
 
 MIDDLEWARE = [
@@ -33,7 +34,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],  # 👈 SIMPLE Y FUNCIONAL
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,13 +56,23 @@ DATABASES = {
     }
 }
 
+# --- CONFIGURACIÓN ESTÁTICA ---
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'Jardineria', 'staticfiles')
+
+# Directo a la raíz para que Vercel encuentre los archivos fácilmente
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Tus archivos personales deben estar en una carpeta llamada 'static' en la raíz
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# Configuración para WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# ------------------------------
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
