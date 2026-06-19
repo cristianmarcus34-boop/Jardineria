@@ -1,4 +1,5 @@
-﻿#!/usr/bin/env bash
+﻿@"
+#!/usr/bin/env bash
 set -o errexit
 
 echo "🚀 Iniciando build para Vercel..."
@@ -35,6 +36,10 @@ mkdir -p staticfiles
 echo "📁 Recopilando archivos estáticos..."
 python manage.py collectstatic --no-input --clear
 
+# 🔥 COPIA MANUAL DE RESPUESTA
+echo "📁 Copia manual de seguridad..."
+cp -r static/* staticfiles/ 2>/dev/null || echo "⚠️ No hay archivos en static para copiar"
+
 # Verificar que los archivos se hayan copiado
 echo "📁 Verificando contenido de staticfiles:"
 ls -la staticfiles/ || echo "⚠️ La carpeta staticfiles está vacía o no existe"
@@ -44,3 +49,4 @@ echo "📁 Verificando archivo CSS:"
 ls -la staticfiles/css/ || echo "⚠️ La carpeta css no existe en staticfiles"
 
 echo "✅ Build completado exitosamente!"
+"@ | Out-File -FilePath build.sh -Encoding utf8
