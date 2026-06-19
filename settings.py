@@ -1,20 +1,15 @@
+@"
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Cargar variables de entorno
-load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Seguridad
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-#&!@')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-#&!@')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app', '.now.sh']
 
-# 👇 MODIFICADO PARA VERCEL
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ".now.sh"]
-
-# Aplicaciones instaladas
+# Aplicaciones
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,13 +18,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pedidos',
-    'whitenoise.runserver_nostatic',  
 ]
 
-# Middleware
+# Middleware (con WhiteNoise)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Servir estáticos en producción
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,9 +32,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'jardineria.urls'
+ROOT_URLCONF = 'urls'
 
-# Configuración de templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -57,9 +50,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'jardineria.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
-# Base de datos (SQLite local / PostgreSQL en Vercel)
+# Base de datos (SQLite para desarrollo, PostgreSQL en producción)
 if os.environ.get('DATABASE_URL'):
     import dj_database_url
     DATABASES = {
@@ -77,25 +70,11 @@ else:
         }
     }
 
-# Validadores de contraseñas
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-# Internacionalización
-LANGUAGE_CODE = 'es-es'
-TIME_ZONE = 'America/Argentina/Buenos_Aires'
-USE_I18N = True
-USE_TZ = True
-
-# Configuración de archivos estáticos
+# Estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Configuración de clave primaria por defecto
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+"@ | Out-File -FilePath settings.py -Encoding utf8
