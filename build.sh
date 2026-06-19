@@ -27,12 +27,20 @@ EOF
 echo "📦 Instalando dependencias..."
 pip install --no-cache-dir -r requirements.txt --break-system-packages
 
+# Crear el directorio staticfiles si no existe
+echo "📁 Creando directorio staticfiles..."
+mkdir -p staticfiles
+
 # Recopilar archivos estáticos
 echo "📁 Recopilando archivos estáticos..."
 python manage.py collectstatic --no-input --clear
 
-# Mostrar qué archivos se copiaron
-echo "📁 Contenido de staticfiles:"
-ls -la staticfiles/ || echo "⚠️ La carpeta staticfiles no existe"
+# Verificar que los archivos se hayan copiado
+echo "📁 Verificando contenido de staticfiles:"
+ls -la staticfiles/ || echo "⚠️ La carpeta staticfiles está vacía o no existe"
+
+# Verificar específicamente el CSS
+echo "📁 Verificando archivo CSS:"
+ls -la staticfiles/css/ || echo "⚠️ La carpeta css no existe en staticfiles"
 
 echo "✅ Build completado exitosamente!"
