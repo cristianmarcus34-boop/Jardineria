@@ -4,268 +4,480 @@
 
 {% block content %}
 
-<!-- ============================== -->
-<!-- HERO DE GALERÍA -->
-<!-- ============================== -->
-<section class="galeria-hero">
+<!-- ============================================================ -->
+<!-- HERO CINEMÁTICO DE GALERÍA -->
+<!-- ============================================================ -->
+<section class="galeria-hero-premium">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-particles" id="heroParticles"></div>
     <div class="container">
-        <div class="galeria-hero-content">
-            <span class="galeria-badge">✦ Nuestros trabajos</span>
-            <h1 class="galeria-title">
-                Galería de <span class="highlight">proyectos</span>
+        <div class="galeria-hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="galeria-badge-premium">
+                <span class="badge-dot"></span>
+                ✦ Nuestros trabajos
+            </span>
+            <h1 class="galeria-title-premium">
+                Galería de <span class="highlight-gradient">proyectos</span>
             </h1>
-            <p class="galeria-subtitle">
+            <p class="galeria-subtitle-premium">
                 Conocé algunos de nuestros trabajos realizados. Calidad y profesionalismo en cada detalle.
             </p>
+            <div class="galeria-hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">12+</span>
+                    <span class="hero-stat-label">Años de experiencia</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">150+</span>
+                    <span class="hero-stat-label">Proyectos realizados</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">98%</span>
+                    <span class="hero-stat-label">Satisfacción</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>Desplázate</span>
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- FILTROS DE CATEGORÍAS -->
-<!-- ============================== -->
-<section class="galeria-filtros">
+<!-- ============================================================ -->
+<!-- FILTROS CON EFECTO GLASS -->
+<!-- ============================================================ -->
+<section class="galeria-filtros-premium">
     <div class="container">
-        <div class="filtros-buttons">
-            <button class="filtro-btn active" data-filter="all">Todos</button>
-            <button class="filtro-btn" data-filter="jardin">Jardinería</button>
-            <button class="filtro-btn" data-filter="piscina">Piscinas</button>
-            <button class="filtro-btn" data-filter="poda">Poda</button>
-            <button class="filtro-btn" data-filter="decoracion">Decoración</button>
+        <div class="filtros-wrapper">
+            <div class="filtros-scroll">
+                <button class="filtro-btn-premium active" data-filter="all">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <button class="filtro-btn-premium" data-filter="jardin">
+                    <i class="fas fa-seedling"></i> Jardinería
+                </button>
+                <button class="filtro-btn-premium" data-filter="piscina">
+                    <i class="fas fa-swimmer"></i> Piscinas
+                </button>
+                <button class="filtro-btn-premium" data-filter="poda">
+                    <i class="fas fa-cut"></i> Poda
+                </button>
+                <button class="filtro-btn-premium" data-filter="decoracion">
+                    <i class="fas fa-palette"></i> Decoración
+                </button>
+            </div>
+            <div class="filtros-count" id="filtrosCount">
+                <span id="visibleCount">12</span> proyectos
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- GALERÍA DE IMÁGENES -->
-<!-- ============================== -->
-<section class="galeria-grid-section">
+<!-- ============================================================ -->
+<!-- GALERÍA CON EFECTO MASONRY -->
+<!-- ============================================================ -->
+<section class="galeria-grid-premium">
     <div class="container">
-        <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-masonry" id="galleryGrid">
             <!-- Jardinería -->
-            <div class="gallery-item" data-category="jardin">
-                <img src="{% static 'img/mant_jar.jfif' %}" alt="Mantenimiento de jardín" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Mantenimiento de jardín</span>
+            <div class="gallery-item-premium" data-category="jardin" data-aos="fade-up" data-aos-delay="100">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/mant_jar.jfif' %}" alt="Mantenimiento de jardín" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Jardinería</span>
+                            <h3>Mantenimiento de jardín</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="jardin">
-                <img src="{% static 'img/cortepasto.jfif' %}" alt="Corte de pasto" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Corte de pasto</span>
+            <div class="gallery-item-premium" data-category="jardin" data-aos="fade-up" data-aos-delay="150">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/cortepasto.jfif' %}" alt="Corte de pasto" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Jardinería</span>
+                            <h3>Corte de pasto</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="jardin">
-                <img src="{% static 'img/corte_cesped.jfif' %}" alt="Corte de césped" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Corte de césped profesional</span>
+            <div class="gallery-item-premium" data-category="jardin" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/corte_cesped.jfif' %}" alt="Corte de césped" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Jardinería</span>
+                            <h3>Corte de césped profesional</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Piscinas -->
-            <div class="gallery-item" data-category="piscina">
-                <img src="{% static 'img/limpiando_piscina.gif' %}" alt="Limpieza de piscina" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Limpieza de piscina</span>
+            <div class="gallery-item-premium" data-category="piscina" data-aos="fade-up" data-aos-delay="250">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/limpiando_piscina.gif' %}" alt="Limpieza de piscina" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Piscinas</span>
+                            <h3>Limpieza de piscina</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="piscina">
-                <img src="{% static 'img/barrefondo.jfif' %}" alt="Barre fondo" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Mantenimiento de piscina</span>
+            <div class="gallery-item-premium" data-category="piscina" data-aos="fade-up" data-aos-delay="300">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/barrefondo.jfif' %}" alt="Barre fondo" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Piscinas</span>
+                            <h3>Mantenimiento de piscina</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Poda -->
-            <div class="gallery-item" data-category="poda">
-                <img src="{% static 'img/podaficus.jfif' %}" alt="Poda de ficus" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Poda de ficus</span>
+            <div class="gallery-item-premium" data-category="poda" data-aos="fade-up" data-aos-delay="350">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/podaficus.jfif' %}" alt="Poda de ficus" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Poda</span>
+                            <h3>Poda de ficus</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="poda">
-                <img src="{% static 'img/poda_arboles.jfif' %}" alt="Poda de árboles" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Poda de árboles</span>
+            <div class="gallery-item-premium" data-category="poda" data-aos="fade-up" data-aos-delay="400">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/poda_arboles.jfif' %}" alt="Poda de árboles" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Poda</span>
+                            <h3>Poda de árboles</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="poda">
-                <img src="{% static 'img/poda.jfif' %}" alt="Poda profesional" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Poda profesional</span>
+            <div class="gallery-item-premium" data-category="poda" data-aos="fade-up" data-aos-delay="450">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/poda.jfif' %}" alt="Poda profesional" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Poda</span>
+                            <h3>Poda profesional</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Decoración -->
-            <div class="gallery-item" data-category="decoracion">
-                <img src="{% static 'img/decoracion_jardin.jfif' %}" alt="Decoración de jardín" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Decoración de jardín</span>
+            <div class="gallery-item-premium" data-category="decoracion" data-aos="fade-up" data-aos-delay="500">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/decoracion_jardin.jfif' %}" alt="Decoración de jardín" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Decoración</span>
+                            <h3>Decoración de jardín</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="decoracion">
-                <img src="{% static 'img/sistema_riego.jfif' %}" alt="Sistema de riego" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Sistema de riego</span>
+            <div class="gallery-item-premium" data-category="decoracion" data-aos="fade-up" data-aos-delay="550">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/sistema_riego.jfif' %}" alt="Sistema de riego" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Decoración</span>
+                            <h3>Sistema de riego</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Otros -->
-            <div class="gallery-item" data-category="jardin">
-                <img src="{% static 'img/corte_maquina.jfif' %}" alt="Corte con máquina" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Corte con máquina profesional</span>
+            <div class="gallery-item-premium" data-category="jardin" data-aos="fade-up" data-aos-delay="600">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/corte_maquina.jfif' %}" alt="Corte con máquina" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Jardinería</span>
+                            <h3>Corte con máquina profesional</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="decoracion">
-                <img src="{% static 'img/break.jfif' %}" alt="Break de jardín" onclick="openLightbox(this)">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                    <span>Espacios exteriores</span>
+            <div class="gallery-item-premium" data-category="decoracion" data-aos="fade-up" data-aos-delay="650">
+                <div class="gallery-item-inner">
+                    <img src="{% static 'img/break.jfif' %}" alt="Break de jardín" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="overlay-content">
+                            <span class="item-category">Decoración</span>
+                            <h3>Espacios exteriores</h3>
+                            <div class="overlay-actions">
+                                <button class="btn-expand" onclick="openLightbox(this)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Empty state (cuando no hay resultados) -->
+        <div class="gallery-empty" id="galleryEmpty">
+            <i class="fas fa-search"></i>
+            <h3>No se encontraron proyectos</h3>
+            <p>Intentá con otra categoría</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESTADÍSTICAS CON ANIMACIÓN -->
+<!-- ============================================================ -->
+<section class="galeria-stats-premium">
+    <div class="container">
+        <div class="stats-grid-premium">
+            <div class="stat-item-premium" data-aos="flip-up" data-aos-delay="100">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="stat-number-premium" data-count="150">0</span>
+                <span class="stat-label-premium">Proyectos completados</span>
+            </div>
+            <div class="stat-item-premium" data-aos="flip-up" data-aos-delay="200">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="stat-number-premium" data-count="98">0</span>
+                <span class="stat-label-premium">% Satisfacción</span>
+            </div>
+            <div class="stat-item-premium" data-aos="flip-up" data-aos-delay="300">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <span class="stat-number-premium" data-count="12">0</span>
+                <span class="stat-label-premium">Años de experiencia</span>
+            </div>
+            <div class="stat-item-premium" data-aos="flip-up" data-aos-delay="400">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <span class="stat-number-premium" data-count="12">0</span>
+                <span class="stat-label-premium">Premios recibidos</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- CONTADOR DE PROYECTOS -->
-<!-- ============================== -->
-<section class="galeria-stats">
+<!-- ============================================================ -->
+<!-- CTA PREMIUM -->
+<!-- ============================================================ -->
+<section class="cta-premium">
+    <div class="cta-bg-pattern"></div>
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="stat-number" data-count="150">0</span>
-                <span class="stat-label">Proyectos completados</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="98">0</span>
-                <span class="stat-label">% Satisfacción</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="12">0</span>
-                <span class="stat-label">Años de experiencia</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="5">0</span>
-                <span class="stat-label">Premios recibidos</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================== -->
-<!-- CTA - LLAMADA A LA ACCIÓN -->
-<!-- ============================== -->
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-content">
-            <h2>¿Querés un espacio <span class="highlight">como estos</span>?</h2>
+        <div class="cta-content" data-aos="zoom-in" data-aos-duration="800">
+            <h2>¿Querés un espacio <span class="highlight-gradient">como estos</span>?</h2>
             <p>Contactanos y transformamos tu jardín o piscina en un lugar único.</p>
-            <a href="{% url 'pedido' %}" class="btn-primary btn-large">
+            <a href="{% url 'pedido' %}" class="btn-primary btn-3d btn-large">
                 <i class="fas fa-whatsapp"></i> Solicitar presupuesto
+                <span class="btn-shimmer"></span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- ============================== -->
-<!-- LIGHTBOX -->
-<!-- ============================== -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
-    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
-    <img id="lightbox-img" src="" alt="Imagen ampliada">
-    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+<!-- ============================================================ -->
+<!-- LIGHTBOX ULTRA MODERNO -->
+<!-- ============================================================ -->
+<div id="lightbox" class="lightbox-premium" onclick="closeLightbox(event)">
+    <button class="lightbox-close-premium" onclick="closeLightbox(event)">✕</button>
+    <button class="lightbox-nav-premium lightbox-prev" onclick="navigateLightbox(-1)">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="lightbox-content-wrapper">
+        <img id="lightbox-img" src="" alt="Imagen ampliada">
+        <div class="lightbox-info" id="lightboxInfo">
+            <span class="lightbox-category" id="lightboxCategory">Jardinería</span>
+            <h3 id="lightboxTitle">Título de la imagen</h3>
+        </div>
+    </div>
+    <button class="lightbox-nav-premium lightbox-next" onclick="navigateLightbox(1)">
+        <i class="fas fa-chevron-right"></i>
+    </button>
     <span class="lightbox-counter" id="lightboxCounter">1 / 12</span>
 </div>
 
 <script>
-    // ==============================
+    // ============================================================ //
     // FILTROS DE CATEGORÍAS
-    // ==============================
-    const filterButtons = document.querySelectorAll('.filtro-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // ============================================================ //
+    const filterButtons = document.querySelectorAll('.filtro-btn-premium');
+    const galleryItems = document.querySelectorAll('.gallery-item-premium');
+    const visibleCount = document.getElementById('visibleCount');
+    const emptyState = document.getElementById('galleryEmpty');
+
+    let currentFilter = 'all';
+
+    function updateGallery(filter) {
+        let visible = 0;
+        galleryItems.forEach(item => {
+            const category = item.dataset.category;
+            const shouldShow = filter === 'all' || category === filter;
+            
+            if (shouldShow) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 50);
+                visible++;
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        visibleCount.textContent = visible;
+        
+        if (visible === 0) {
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+        }
+    }
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remover clase active de todos los botones
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
-
-            const filter = this.dataset.filter;
-
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
+            currentFilter = this.dataset.filter;
+            updateGallery(currentFilter);
         });
     });
 
-    // ==============================
+    // Inicializar
+    updateGallery('all');
+
+    // ============================================================ //
     // LIGHTBOX CON NAVEGACIÓN
-    // ==============================
+    // ============================================================ //
     let currentImages = [];
     let currentIndex = 0;
+    let imageTitles = [];
 
-    function openLightbox(imgElement) {
+    function openLightbox(element) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const counter = document.getElementById('lightboxCounter');
+        const category = document.getElementById('lightboxCategory');
+        const title = document.getElementById('lightboxTitle');
 
-        // Obtener todas las imágenes de la galería
-        const allImages = document.querySelectorAll('.gallery-item img');
-        currentImages = Array.from(allImages);
+        // Obtener todas las imágenes visibles
+        const visibleItems = document.querySelectorAll('.gallery-item-premium[style*="display: block"], .gallery-item-premium:not([style*="display: none"])');
+        currentImages = Array.from(visibleItems).map(item => item.querySelector('img'));
+        imageTitles = Array.from(visibleItems).map(item => {
+            const overlay = item.querySelector('.overlay-content h3');
+            return overlay ? overlay.textContent : 'Imagen';
+        });
 
-        // Encontrar el índice de la imagen actual
+        const imgElement = element.closest('.gallery-item-premium')?.querySelector('img') || element;
         currentIndex = currentImages.indexOf(imgElement);
+        if (currentIndex === -1) currentIndex = 0;
 
-        // Mostrar la imagen
         lightbox.style.display = 'flex';
-        lightboxImg.src = imgElement.src;
+        lightboxImg.src = currentImages[currentIndex].src;
         counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        
+        // Actualizar info
+        const item = visibleItems[currentIndex];
+        const cat = item?.dataset?.category || '';
+        const titleText = imageTitles[currentIndex] || 'Imagen';
+        category.textContent = cat.charAt(0).toUpperCase() + cat.slice(1) || 'Proyecto';
+        title.textContent = titleText;
 
-        // Animación de entrada
         setTimeout(() => {
             lightbox.style.opacity = 1;
         }, 10);
-
-        // Bloquear scroll
         document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox(event) {
         const lightbox = document.getElementById('lightbox');
-        if (event.target.id === 'lightbox-img' || event.target.closest('.lightbox-nav')) {
+        if (event.target.id === 'lightbox-img' || event.target.closest('.lightbox-nav-premium') || event.target.closest('.lightbox-close-premium')) {
             return;
         }
         lightbox.style.opacity = 0;
@@ -278,13 +490,22 @@
     function navigateLightbox(direction) {
         const lightboxImg = document.getElementById('lightbox-img');
         const counter = document.getElementById('lightboxCounter');
+        const category = document.getElementById('lightboxCategory');
+        const title = document.getElementById('lightboxTitle');
 
         currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
         lightboxImg.src = currentImages[currentIndex].src;
         counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        
+        const visibleItems = document.querySelectorAll('.gallery-item-premium[style*="display: block"], .gallery-item-premium:not([style*="display: none"])');
+        const item = visibleItems[currentIndex];
+        if (item) {
+            const cat = item?.dataset?.category || '';
+            category.textContent = cat.charAt(0).toUpperCase() + cat.slice(1) || 'Proyecto';
+            title.textContent = imageTitles[currentIndex] || 'Imagen';
+        }
     }
 
-    // Navegación con teclado
     document.addEventListener('keydown', function(e) {
         const lightbox = document.getElementById('lightbox');
         if (lightbox.style.display === 'flex') {
@@ -300,44 +521,61 @@
         }
     });
 
-    // ==============================
+    // ============================================================ //
     // CONTADOR ANIMADO
-    // ==============================
+    // ============================================================ //
     function animateCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-
+        const counters = document.querySelectorAll('.stat-number-premium');
         counters.forEach(counter => {
             const target = parseInt(counter.dataset.count);
-            const increment = Math.ceil(target / speed);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += increment;
-                if (current >= target) {
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOutQuad = 1 - Math.pow(1 - progress, 3);
+                const current = easeOutQuad * target;
+                counter.textContent = Math.round(current);
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
                     counter.textContent = target;
-                    return;
                 }
-                counter.textContent = current;
-                setTimeout(updateCounter, 20);
-            };
-            updateCounter();
+            }
+            requestAnimationFrame(updateCounter);
         });
     }
 
-    // Ejecutar cuando la sección sea visible
-    const statsSection = document.querySelector('.galeria-stats');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
+    const statsSection = document.querySelector('.galeria-stats-premium');
     if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
         observer.observe(statsSection);
+    }
+
+    // ============================================================ //
+    // PARTÍCULAS EN EL HERO
+    // ============================================================ //
+    const particlesContainer = document.getElementById('heroParticles');
+    if (particlesContainer) {
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
     }
 </script>
 
